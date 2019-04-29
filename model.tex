@@ -1,0 +1,79 @@
+% Farmer & hunter-gatherer model
+\documentclass[a4paper,12pt]{article}
+\usepackage{cite}
+\usepackage{hyperref}
+\usepackage{geometry}
+\geometry{a4paper,left=2cm,right=2cm,top=1.5cm,bottom=2.5cm}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{wrapfig}
+\usepackage[fleqn]{amsmath}
+%\usepackage{float}
+\usepackage{listings} %插入代码
+\usepackage{xcolor}
+\graphicspath{pic/}
+\makeatletter
+\newcommand{\rmnum}[1]{\romannumeral #1}
+\newcommand{\Rmnum}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
+
+\lstset{numbers=left, %设置行号位置
+numberstyle=\tiny, %设置行号大小
+keywordstyle=\color{blue}, % 设置关键字颜色
+commentstyle=\color[cmyk]{1,0,1,0}, %设置注释颜色
+frame=single, %设置边框格式
+escapeinside=``, %逃逸字符(1 左面的键)，用于显示中文
+        %breaklines, % 自动折行
+               extendedchars=false, %解决代码跨页时，章节标题，页眉等汉字不显示的问题
+               xleftmargin=3em,xrightmargin=3em, aboveskip=2em, %设置边距
+               tabsize=4, % 设置tab空格数
+                showspaces=false %不显示空格
+                     }
+
+
+\title{}
+\author{Yanan ZHAO}
+
+
+\begin{document}
+    \maketitle
+
+%\tableofcontents
+
+\section{Assumption}
+We consider the spread of farmers into a region occupied by hunter-gatherers, which is modelled by a reaction-diffusion process in an infinite linear habitat. The indigenous hunter-gatherers who come into contact with farmers may be converted to farming at rate $e$\cite{ryabov2008population}.
+
+
+\section{Model}
+Reaction-diffusion model
+$$
+\frac{\partial u}{\partial t} = \nabla \cdot \left(D(u)\nabla u \right) + f(u)
+$$
+where the first term represent diffusive movement and the last term $f(u)$ is the reaction term and describes population growth dynamics.
+
+Fisher's equation for the wave of advance of advantageous genes\cite{fisher1937wave} has been applied to the dynamics of the farmers. Let $N(x,t)$ be the density of farmers at position $x$ and time $t$, then the model can be written as
+$$
+\frac{\partial N}{\partial t} = D \frac{\partial^2 N}{\partial x^2} + rN(1-\frac{N}{K}),
+$$
+where $D$ is the diffusion constant, $r$ is the intrinsic growth rate, and $K$ is the carrying capacity. This model indicates that a travelling wavefront of farmers is generated that advances at the constant speed $v = 2(Dr)^{1/2}$\cite{fisher1937wave}.
+\paragraph{Model}
+For mathematical simplicity, we consider the spread of farmers in an infinite habitat that is linear. Initially, the distribution of farmers is localized (initial farmers), and the remainder of the habitat is occupied by hunter-gatherers. Individuals migrate at random, and some hunter-gatherers who come into contact with farmers are converted (converted farmers). Each of the three populations, i.e., initial farmers, converted farmers, and hunter-gatherers, grows logistically. Their densities at position x and at time t are
+represented by $F(x, t), C(x, t)$, and $H(x, t)$, respectively\cite{aoki1996travelling}.
+
+\begin{align}
+    \frac{\partial F}{\partial t} &= D_f \frac{\partial^2F}{\partial x^2} + r_f
+FS_f - v_f \frac{\partial F}{\partial x} \\
+    \frac{\partial C}{\partial t} &= D_c \frac{\partial^2C}{\partial x^2} + r_c CS_f - v_c \frac{\partial C}{\partial x} + (e_1F+e_2C)H \\
+    \frac{\partial H}{\partial t} &= D_h \frac{\partial^2H}{\partial x^2} + r_h HS_h - (e_1F+e_2C)H\\
+    \frac{\partial S}{\partial t} &=
+\end{align}
+where $D_f, D_c, D_h$ are the diffusion constants; $r_f, r_c, r_h$ are the intrinsic growth rates of initial farmers, converted farmers and hunter-gatherers; and $e_1, e_2$ are the conversion rate of hunter-gatherers to farmers. It is very unlikely that the three populations of initial farmers, converted
+farmers, and hunter-gatherers have the same diffusivity in space, hence their diffusivities should
+be assumed arbitrary, i.e. the equality $D_f = D_c = D_h$ can take place only in a special case\cite{cherniha2018hunter}. $K$ and $L$ are the carrying capacities of farmers and hunter-gatherers. Parameters $e_2, r_c,$ and $r_h$ are assumed to be nonnegative, while other parameters except $v$ are assumed to be positive.
+Initial and converted farmers compete for the same resources. By contrast, there is no competition between farmers and hunter-gatherers, who utilize different ecological resources\cite{holmes1994partial}. The first order term is advection term, where $v_f$ and $v_c$ are advection coeffients  Advection can arise from the behavior of individuals in response to gradients of environmental variables or population densities\cite{cosner2014reaction}. In the absence of advection in this system, the population would propagate with velocity $v$. If advection exists, which is going into the opposite direction with velocity $v_f$, the propagation velocity is $v_f^{'} = v - v_f$\cite{ryabov2008population}.
+
+
+\bibliographystyle{plain}
+\bibliography{nomadic_colonial}
+
+\end{document}

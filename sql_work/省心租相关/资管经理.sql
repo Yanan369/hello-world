@@ -1,4 +1,5 @@
 --模板查询：资管经理底表（施工中）
+--233333
 SELECT  emp.corp_name                                       AS `公司`
        ,emp.dabu                                            AS `大部`
        ,emp.region_name                                     AS `事业部`
